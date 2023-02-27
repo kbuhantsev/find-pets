@@ -1,0 +1,19 @@
+{
+  "files": {
+    "main.css": "/find-pets/static/css/main.b51ba86d.css",
+    "main.js": "/find-pets/static/js/main.be190c8e.js",
+    "static/js/245.6ad44814.chunk.js": "/find-pets/static/js/245.6ad44814.chunk.js",
+    "static/js/163.014c9a88.chunk.js": "/find-pets/static/js/163.014c9a88.chunk.js",
+    "static/js/996.8e16a541.chunk.js": "/find-pets/static/js/996.8e16a541.chunk.js",
+    "index.html": "/find-pets/index.html",
+    "main.b51ba86d.css.map": "/find-pets/static/css/main.b51ba86d.css.map",
+    "main.be190c8e.js.map": "/find-pets/static/js/main.be190c8e.js.map",
+    "245.6ad44814.chunk.js.map": "/find-pets/static/js/245.6ad44814.chunk.js.map",
+    "163.014c9a88.chunk.js.map": "/find-pets/static/js/163.014c9a88.chunk.js.map",
+    "996.8e16a541.chunk.js.map": "/find-pets/static/js/996.8e16a541.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.b51ba86d.css",
+    "static/js/main.be190c8e.js"
+  ]
+}
