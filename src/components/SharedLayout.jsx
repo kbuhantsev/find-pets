@@ -6,6 +6,11 @@ import {
 } from '@mui/material';
 import React, { Suspense } from 'react';
 import { Outlet } from 'react-router-dom';
+import { useGetCurrentUserQuery } from 'redux/user/userApi';
+import {
+  Backdrop,
+  CircularProgress,
+} from '../../node_modules/@mui/material/index';
 import Header from './Header/Header';
 
 const ColorModeContext = React.createContext({
@@ -48,6 +53,7 @@ const getDesignTokens = mode => ({
 
 const SharedLayout = () => {
   const [mode, setMode] = React.useState('light');
+  const { isLoading } = useGetCurrentUserQuery();
 
   const colorMode = React.useMemo(
     () => ({
@@ -65,10 +71,21 @@ const SharedLayout = () => {
       <ThemeProvider theme={theme}>
         <CssBaseline />
         <Container>
-          <Header />
-          <Suspense fallback={<></>}>
-            <Outlet />
-          </Suspense>
+          {isLoading ? (
+            <Backdrop
+              sx={{ color: '#fff', zIndex: theme => theme.zIndex.drawer + 1 }}
+              open={isLoading}
+            >
+              <CircularProgress color="inherit" />
+            </Backdrop>
+          ) : (
+            <>
+              <Header />
+              <Suspense fallback={<></>}>
+                <Outlet />
+              </Suspense>
+            </>
+          )}
         </Container>
       </ThemeProvider>
     </ColorModeContext.Provider>

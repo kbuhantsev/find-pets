@@ -3,8 +3,8 @@ import { NavLink } from 'react-router-dom';
 
 const Navigation = () => {
   return (
-    <Box as="nav" display="flex" flexDirection="row">
-      <Box as="ul">
+    <Box as="nav">
+      <Box as="ul" display="flex" flexDirection="row">
         <li>
           <NavLink to="news">News</NavLink>
         </li>

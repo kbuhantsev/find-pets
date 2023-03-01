@@ -6,9 +6,13 @@ const NoticesPage = () => {
 
   return (
     <>
-      <div>NOTICES SEARCH</div>
       <div>
-        <Box as="ul">
+        <h3>NOTICES SEARCH</h3>
+        <input type="text" placeholder="search text" />
+        <button type="button">Search</button>
+      </div>
+      <div>
+        <Box as="ul" display="flex" flexDirection="row" gridGap="30px">
           <li>
             <NavLink to="sell">sell</NavLink>
           </li>

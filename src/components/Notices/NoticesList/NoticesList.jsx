@@ -6,11 +6,11 @@ const NoticesList = () => {
     <>
       <p>{category}</p>
       <ul>
-        <li>notice 1</li>
-        <li>notice 2</li>
-        <li>notice 2</li>
-        <li>notice 2</li>
-        <li>notice 2</li>
+        <li>notice 1 {category}</li>
+        <li>notice 2 {category}</li>
+        <li>notice 3 {category}</li>
+        <li>notice 4 {category}</li>
+        <li>notice 5 {category}</li>
       </ul>
     </>
   );
