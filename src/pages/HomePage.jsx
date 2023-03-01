@@ -1,12 +1,12 @@
 import ColorMode from '../components/ColorMode';
 
-const Home = () => {
+const HomePage = () => {
   return (
     <>
       <ColorMode />
-      <div>Home</div>
+      <h2>Home page</h2>
     </>
   );
 };
 
-export default Home;
+export default HomePage;
