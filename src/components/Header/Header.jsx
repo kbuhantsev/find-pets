@@ -4,15 +4,19 @@ import Logo from './Logo/Logo';
 import Navigation from './Navigation/Navigation';
 import UserMenu from './UserMenu/UserMenu';
 
+const toolbarStyles = { display: 'flex', justifyContent: 'space-between' };
+
 const Header = () => {
   return (
     <Box sx={{ flexGrow: 1 }}>
       <AppBar position="static" as="header">
-        <Toolbar>
+        <Toolbar sx={toolbarStyles}>
           <Logo />
           <Navigation />
-          <ColorMode />
-          <UserMenu />
+          <div>
+            <ColorMode />
+            <UserMenu />
+          </div>
         </Toolbar>
       </AppBar>
     </Box>
