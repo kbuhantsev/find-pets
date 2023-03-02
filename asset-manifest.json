@@ -1,11 +1,11 @@
 {
   "files": {
     "main.css": "/find-pets/static/css/main.c9fddf9a.css",
-    "main.js": "/find-pets/static/js/main.7a23e16a.js",
+    "main.js": "/find-pets/static/js/main.c2d2079e.js",
     "static/js/983.f86f2552.chunk.js": "/find-pets/static/js/983.f86f2552.chunk.js",
     "static/js/150.53ab9429.chunk.js": "/find-pets/static/js/150.53ab9429.chunk.js",
     "static/js/782.041f37d9.chunk.js": "/find-pets/static/js/782.041f37d9.chunk.js",
-    "static/js/541.25ed6ce1.chunk.js": "/find-pets/static/js/541.25ed6ce1.chunk.js",
+    "static/js/499.31c1d443.chunk.js": "/find-pets/static/js/499.31c1d443.chunk.js",
     "static/js/997.70fe7ce4.chunk.js": "/find-pets/static/js/997.70fe7ce4.chunk.js",
     "static/js/637.360d257d.chunk.js": "/find-pets/static/js/637.360d257d.chunk.js",
     "static/js/432.359420f7.chunk.js": "/find-pets/static/js/432.359420f7.chunk.js",
@@ -13,13 +13,14 @@
     "static/js/520.e07852fa.chunk.js": "/find-pets/static/js/520.e07852fa.chunk.js",
     "static/js/289.37b0748f.chunk.js": "/find-pets/static/js/289.37b0748f.chunk.js",
     "static/js/595.87b35700.chunk.js": "/find-pets/static/js/595.87b35700.chunk.js",
+    "static/media/puppy.png": "/find-pets/static/media/puppy.9b1128bc2cc20c127a9a.png",
     "index.html": "/find-pets/index.html",
     "main.c9fddf9a.css.map": "/find-pets/static/css/main.c9fddf9a.css.map",
-    "main.7a23e16a.js.map": "/find-pets/static/js/main.7a23e16a.js.map",
+    "main.c2d2079e.js.map": "/find-pets/static/js/main.c2d2079e.js.map",
     "983.f86f2552.chunk.js.map": "/find-pets/static/js/983.f86f2552.chunk.js.map",
     "150.53ab9429.chunk.js.map": "/find-pets/static/js/150.53ab9429.chunk.js.map",
     "782.041f37d9.chunk.js.map": "/find-pets/static/js/782.041f37d9.chunk.js.map",
-    "541.25ed6ce1.chunk.js.map": "/find-pets/static/js/541.25ed6ce1.chunk.js.map",
+    "499.31c1d443.chunk.js.map": "/find-pets/static/js/499.31c1d443.chunk.js.map",
     "997.70fe7ce4.chunk.js.map": "/find-pets/static/js/997.70fe7ce4.chunk.js.map",
     "637.360d257d.chunk.js.map": "/find-pets/static/js/637.360d257d.chunk.js.map",
     "432.359420f7.chunk.js.map": "/find-pets/static/js/432.359420f7.chunk.js.map",
@@ -30,6 +31,6 @@
   },
   "entrypoints": [
     "static/css/main.c9fddf9a.css",
-    "static/js/main.7a23e16a.js"
+    "static/js/main.c2d2079e.js"
   ]
 }
