@@ -19,6 +19,13 @@ export const authSlice = createSlice({
         state.token = null;
         state.user = null;
         state.isLoggedIn = false;
-      });
+      })
+      .addMatcher(
+        userApi.endpoints.getCurrentUser.matchFulfilled,
+        (state, { payload }) => {
+          state.user = payload;
+          state.isLoggedIn = true;
+        }
+      );
   },
 });

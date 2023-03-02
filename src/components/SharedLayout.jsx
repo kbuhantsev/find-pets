@@ -4,6 +4,7 @@ import {
   CssBaseline,
   ThemeProvider,
 } from '@mui/material';
+import { useUser } from 'hooks/useUser';
 import React, { Suspense } from 'react';
 import { Outlet } from 'react-router-dom';
 import { useGetCurrentUserQuery } from 'redux/user/userApi';
@@ -53,7 +54,8 @@ const getDesignTokens = mode => ({
 
 const SharedLayout = () => {
   const [mode, setMode] = React.useState('light');
-  const { isLoading } = useGetCurrentUserQuery();
+  const { token } = useUser();
+  const { isLoading } = useGetCurrentUserQuery({ skip: !token });
 
   const colorMode = React.useMemo(
     () => ({
@@ -70,23 +72,23 @@ const SharedLayout = () => {
     <ColorModeContext.Provider value={colorMode}>
       <ThemeProvider theme={theme}>
         <CssBaseline />
-        <Container>
-          {isLoading ? (
-            <Backdrop
-              sx={{ color: '#fff', zIndex: theme => theme.zIndex.drawer + 1 }}
-              open={isLoading}
-            >
-              <CircularProgress color="inherit" />
-            </Backdrop>
-          ) : (
-            <>
-              <Header />
-              <Suspense fallback={<></>}>
+        {isLoading ? (
+          <Backdrop
+            sx={{ color: '#fff', zIndex: theme => theme.zIndex.drawer + 1 }}
+            open={isLoading}
+          >
+            <CircularProgress color="inherit" />
+          </Backdrop>
+        ) : (
+          <>
+            <Header />
+            <Suspense fallback={<></>}>
+              <Container>
                 <Outlet />
-              </Suspense>
-            </>
-          )}
-        </Container>
+              </Container>
+            </Suspense>
+          </>
+        )}
       </ThemeProvider>
     </ColorModeContext.Provider>
   );

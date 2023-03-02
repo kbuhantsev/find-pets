@@ -1,4 +1,5 @@
-import Box from 'components/Box';
+import { Box } from '@mui/material';
+import NavButtonCustom from 'components/Buttons/NavButtonCustom';
 import { NavLink } from 'react-router-dom';
 
 const Navigation = () => {
@@ -6,13 +7,19 @@ const Navigation = () => {
     <Box as="nav">
       <Box as="ul" display="flex" flexDirection="row">
         <li>
-          <NavLink to="news">News</NavLink>
+          <NavButtonCustom to="/news" component={NavLink} color="inherit">
+            News
+          </NavButtonCustom>
         </li>
         <li>
-          <NavLink to="notices">Find pets</NavLink>
+          <NavButtonCustom to="/notices" component={NavLink} color="inherit">
+            Find pets
+          </NavButtonCustom>
         </li>
         <li>
-          <NavLink to="friends">Our friends</NavLink>
+          <NavButtonCustom to="/friends" component={NavLink} color="inherit">
+            Our friends
+          </NavButtonCustom>
         </li>
       </Box>
     </Box>

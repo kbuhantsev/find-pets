@@ -1,4 +1,4 @@
-import Box from 'components/Box';
+import Box from '@mui/material/Box';
 import { useMatch, Outlet, Navigate, NavLink } from 'react-router-dom';
 
 const NoticesPage = () => {

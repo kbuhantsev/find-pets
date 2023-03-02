@@ -21,6 +21,7 @@ const LoginPage = () => {
 
       navigate('/user');
     } catch (error) {
+      console.log(error);
       Notify.failure(error.data.message);
     }
   };
@@ -31,11 +32,11 @@ const LoginPage = () => {
       <form onSubmit={onSubmit}>
         <label>
           Email:
-          <input type="text" name="email" value="k.buhantsev@gmail.com" />
+          <input type="text" name="email" />
         </label>
         <label>
           Password:
-          <input type="text" name="password" value="1234567" />
+          <input type="text" name="password" />
         </label>
         <button type="submit">submit</button>
       </form>

@@ -6,18 +6,19 @@ import { StyledEngineProvider } from '@mui/material';
 import './index.css';
 import 'react-toastify/dist/ReactToastify.min.css';
 import { Provider } from 'react-redux';
-import { store } from './redux/store';
+import { persistor, store } from './redux/store';
+import { PersistGate } from 'redux-persist/integration/react';
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
     <Provider store={store}>
-      {/*<PersistGate loading={null} persistor={persistor}></PersistGate>*/}
-      <StyledEngineProvider injectFirst>
-        <BrowserRouter basename="/find-pets">
-          <App />
-        </BrowserRouter>
-      </StyledEngineProvider>
-      {/* </PersistGate>*/}
+      <PersistGate loading={null} persistor={persistor}>
+        <StyledEngineProvider injectFirst>
+          <BrowserRouter basename="/find-pets">
+            <App />
+          </BrowserRouter>
+        </StyledEngineProvider>
+      </PersistGate>
     </Provider>
   </React.StrictMode>
 );
