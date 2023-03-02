@@ -1,6 +1,6 @@
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import { useNavigate } from 'react-router-dom';
-import { Button } from '@mui/material';
+import { Box, Button } from '@mui/material';
 import { useUser } from 'hooks/useUser';
 
 const UserMenu = () => {
@@ -18,7 +18,7 @@ const UserMenu = () => {
           Account
         </Button>
       ) : (
-        <>
+        <Box display="flex" gap="5px">
           <Button
             variant="outlined"
             color="inherit"
@@ -33,7 +33,7 @@ const UserMenu = () => {
           >
             Register
           </Button>
-        </>
+        </Box>
       )}
     </>
   );
