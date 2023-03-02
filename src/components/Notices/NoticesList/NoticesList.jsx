@@ -2,12 +2,15 @@ import { Backdrop, CircularProgress } from '@mui/material';
 import { useMemo } from 'react';
 // import { useParams } from 'react-router-dom';
 import { useGetAllNoticesQuery } from 'redux/notices/noticesApi';
+import errorImg from '../../../images/errors/puppy.png';
 
 const NoticesList = () => {
   // let { category } = useParams();
-  const { data = [], error, isLoading } = useGetAllNoticesQuery();
+  const { data: notices = [], error, isLoading } = useGetAllNoticesQuery();
 
   useMemo(() => '', []);
+
+  // console.log(notices);
 
   return (
     <>
@@ -19,17 +22,16 @@ const NoticesList = () => {
           <CircularProgress color="inherit" />
         </Backdrop>
       )}
-      {error && (
-        <img src="../../../images/errors/puppy.png" alt="puppy">
-          Ooops
-        </img>
+      {error && <img src={errorImg} alt="puppy" />}
+      {notices && (
+        <ul>
+          {notices.map(notice => (
+            <li key={notice.id}>
+              {notice.category} {notice.title}
+            </li>
+          ))}
+        </ul>
       )}
-      {data.length &&
-        data.map(notice => (
-          <p>
-            {notice.category} {notice.title}
-          </p>
-        ))}
     </>
   );
 };

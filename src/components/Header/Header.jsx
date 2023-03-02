@@ -9,7 +9,7 @@ const toolbarStyles = { display: 'flex', justifyContent: 'space-between' };
 const Header = () => {
   return (
     <Box sx={{ flexGrow: 1 }}>
-      <AppBar position="static" as="header">
+      <AppBar position="static">
         <Toolbar sx={toolbarStyles}>
           <Logo />
           <Navigation />
