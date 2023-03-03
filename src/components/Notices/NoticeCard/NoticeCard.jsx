@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import {
   Card,
   CardMedia,
@@ -10,7 +10,6 @@ import {
   List,
   ListItem,
   ListItemText,
-  ThemeProvider,
 } from '@mui/material';
 import { useParams } from 'react-router-dom';
 
@@ -54,10 +53,6 @@ const NoticeCard = ({ notice }) => {
   if (currentCategory === 'my-ads') {
     myads = true;
   }
-
-  // const theme = useContext('themeProvider');
-
-  // console.log(theme);
 
   return (
     <Card sx={{ maxWidth: 345 }} id={_id}>
