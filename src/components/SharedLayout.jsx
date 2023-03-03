@@ -34,21 +34,26 @@ const getDesignTokens = mode => ({
     ...(mode === 'light'
       ? {
           primary: {
-            main: '#F59256',
-          },
-          accent: {
             main: '#FF6101',
+            light: '#F59256',
+          },
+          background: {
+            paper: '#fff',
+            default: '#FDF7F2',
           },
         }
       : {
           primary: {
-            main: '#F59256',
-          },
-          accent: {
             main: '#FF6101',
+            light: '#F59256',
+          },
+          background: {
+            paper: '#000',
+            default: '#000',
           },
         }),
-    colors: {
+
+    common: {
       white: '#ffffff',
       black: '#111111',
     },

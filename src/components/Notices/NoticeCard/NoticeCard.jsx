@@ -1,17 +1,16 @@
 import React from 'react';
-import {
-  Card,
-  CardMedia,
-  CardContent,
-  Typography,
-  CardActions,
-  Button,
-  Chip,
-  List,
-  ListItem,
-  ListItemText,
-} from '@mui/material';
+import { CardMedia, CardContent, Button, CardActions } from '@mui/material';
 import { useParams } from 'react-router-dom';
+import {
+  CardStyled,
+  CardTitle,
+  ChipCategory,
+  ChipFavorite,
+  DescrTitle,
+  DescrValue,
+  ListItemStyled,
+  ListStyled,
+} from './NoticeCard.styled';
 
 // {
 //   "_id": "63fe2ad6f3ffff3515f80757",
@@ -55,36 +54,37 @@ const NoticeCard = ({ notice }) => {
   }
 
   return (
-    <Card sx={{ maxWidth: 345 }} id={_id}>
-      <CardMedia sx={{ height: 140 }} image={imageUrl} />
-      <Chip label={category} />
-      <Chip label={favorite?.toString()} />
+    <CardStyled id={_id}>
+      <ChipCategory label={category} />
+      <ChipFavorite label={favorite?.toString()} />
+      <CardMedia sx={{ height: 280 }} image={imageUrl} />
+
       <CardContent>
-        <Typography gutterBottom variant="subtitle1" component="p">
+        <CardTitle variant="h6" gutterBottom>
           {title}
-        </Typography>
-        <List>
-          <ListItem>
-            <ListItemText>Breed</ListItemText>
-            <ListItemText>{breed}</ListItemText>
-          </ListItem>
-          <ListItem>
-            <ListItemText>Place</ListItemText>
-            <ListItemText>{location}</ListItemText>
-          </ListItem>
-          <ListItem>
-            <ListItemText>Age</ListItemText>
-            <ListItemText>
+        </CardTitle>
+        <ListStyled>
+          <ListItemStyled>
+            <DescrTitle>Breed</DescrTitle>
+            <DescrValue>{breed}</DescrValue>
+          </ListItemStyled>
+          <ListItemStyled>
+            <DescrTitle>Place</DescrTitle>
+            <DescrValue>{location}</DescrValue>
+          </ListItemStyled>
+          <ListItemStyled>
+            <DescrTitle>Age</DescrTitle>
+            <DescrValue>
               {age.years > 0 ? `${age.years} years` : `${age.months} months`}
-            </ListItemText>
-          </ListItem>
+            </DescrValue>
+          </ListItemStyled>
           {price > 0 && (
-            <ListItem>
-              <ListItemText>Price</ListItemText>
-              <ListItemText>{price}</ListItemText>
-            </ListItem>
+            <ListItemStyled>
+              <DescrTitle>Price</DescrTitle>
+              <DescrValue>{price}</DescrValue>
+            </ListItemStyled>
           )}
-        </List>
+        </ListStyled>
       </CardContent>
       <CardActions sx={{ spacing: true }}>
         {myads && (
@@ -96,7 +96,7 @@ const NoticeCard = ({ notice }) => {
           Learn More
         </Button>
       </CardActions>
-    </Card>
+    </CardStyled>
   );
 };
 

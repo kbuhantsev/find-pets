@@ -1,5 +1,11 @@
+import { LogoStyled } from './Logo.styled';
+
 const Logo = () => {
-  return <div>LOGO</div>;
+  return (
+    <LogoStyled>
+      pe<strong>t</strong>ly
+    </LogoStyled>
+  );
 };
 
 export default Logo;
