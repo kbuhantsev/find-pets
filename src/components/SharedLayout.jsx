@@ -55,7 +55,7 @@ const getDesignTokens = mode => ({
 const SharedLayout = () => {
   const [mode, setMode] = React.useState('light');
   const { token } = useUser();
-  const { isLoading } = useGetCurrentUserQuery({ skip: !token });
+  const { isFetching } = useGetCurrentUserQuery({ skip: !token });
 
   const colorMode = React.useMemo(
     () => ({
@@ -72,12 +72,12 @@ const SharedLayout = () => {
     <ColorModeContext.Provider value={colorMode}>
       <ThemeProvider theme={theme}>
         <CssBaseline />
-        {isLoading ? (
+        {isFetching ? (
           <Backdrop
-            sx={{ color: '#fff', zIndex: theme => theme.zIndex.drawer + 1 }}
-            open={isLoading}
+            sx={{ color: '#F59256', zIndex: theme => theme.zIndex.drawer + 1 }}
+            open={isFetching}
           >
-            <CircularProgress color="inherit" />
+            <CircularProgress color="primary" size={75} />
           </Backdrop>
         ) : (
           <>

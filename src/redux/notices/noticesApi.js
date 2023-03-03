@@ -23,43 +23,15 @@ export const noticesApi = createApi({
       transformResponse: response => response.data,
       providesTags: ['Notices'],
     }),
+    getNoticesByCategory: builder.query({
+      query: query => ({
+        url: `/notices/${query}`,
+      }),
+      transformResponse: response => response.data,
+      providesTags: ['Notices'],
+    }),
   }),
 });
 
-export const { useGetAllNoticesQuery } = noticesApi;
-
-// export const noticesApi = createApi({
-//   reducerPat: 'noticesApi',
-//   baseQuery: fetchBaseQuery({
-//     baseUrl: BASE_URL,
-//     prepareHeaders: (headers, { getState }) => {
-//       const token = getState().auth.token;
-//       if (token) {
-//         headers.set('Authorization', `Bearer ${token}`);
-//       } else {
-//         headers.set('Authorization', '');
-//       }
-//       return headers;
-//     },
-//   }),
-//   tagTypes: ['Notices'],
-//   endpoints: builder => ({
-//     getAllNotices: builder.query({
-//       query: () => ({
-//         url: '/notices',
-//         method: 'GET',
-//       }),
-//       providesTags: ['Notices'],
-//     }),
-//     getNoticesByCategory: builder.query({
-//       query: category => ({
-//         url: `/notices/category/${category}`,
-//         method: 'GET',
-//       }),
-//       providesTags: ['Notices'],
-//     }),
-//   }),
-// });
-
-// export const { useGetAllNoticesQuery, useGetNoticesByCategoryQuery } =
-//   noticesApi;
+export const { useGetAllNoticesQuery, useGetNoticesByCategoryQuery } =
+  noticesApi;
