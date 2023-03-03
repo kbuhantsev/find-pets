@@ -19,6 +19,16 @@ const ColorModeContext = React.createContext({
 });
 
 const getDesignTokens = mode => ({
+  breakpoints: {
+    keys: ['mobile', 'tablet', 'laptop', 'desktop'],
+    values: {
+      mobile: 0,
+      tablet: 600,
+      laptop: 900,
+      desktop: 1200,
+    },
+    unit: 'px',
+  },
   palette: {
     mode,
     ...(mode === 'light'
@@ -41,13 +51,6 @@ const getDesignTokens = mode => ({
     colors: {
       white: '#ffffff',
       black: '#111111',
-    },
-  },
-  breakpoints: {
-    values: {
-      mobile: 0,
-      tablet: 768,
-      desktop: 1280,
     },
   },
 });

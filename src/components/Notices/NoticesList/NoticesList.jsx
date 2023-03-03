@@ -1,4 +1,5 @@
 import { Box, CircularProgress } from '@mui/material';
+import Grid from '@mui/material/Unstable_Grid2';
 import { useCallback } from 'react';
 import { useParams } from 'react-router-dom';
 import { useGetNoticesByCategoryQuery } from 'redux/notices/noticesApi';
@@ -41,11 +42,25 @@ const NoticesList = () => {
         <img src={errorImg} alt="puppy" width={300} />
       ) : (
         notices && (
-          <ul>
-            {notices.map(notice => (
-              <NoticeCard key={notice._id} notice={notice} />
-            ))}
-          </ul>
+          <Box sx={{ flexGrow: 1 }}>
+            <Grid
+              container
+              columns={{ mobile: 1, tablet: 2, laptop: 3, desktop: 4 }}
+              spacing={{ mobile: 1, tablet: 2, laptop: 2, desktop: 3 }}
+            >
+              {notices.map(notice => (
+                <Grid
+                  mobile={1}
+                  tablet={1}
+                  laptop={1}
+                  desktop={1}
+                  key={notice._id}
+                >
+                  <NoticeCard notice={notice} />
+                </Grid>
+              ))}
+            </Grid>
+          </Box>
         )
       )}
     </>

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import {
   Card,
   CardMedia,
@@ -10,6 +10,7 @@ import {
   List,
   ListItem,
   ListItemText,
+  ThemeProvider,
 } from '@mui/material';
 import { useParams } from 'react-router-dom';
 
@@ -54,11 +55,15 @@ const NoticeCard = ({ notice }) => {
     myads = true;
   }
 
+  // const theme = useContext('themeProvider');
+
+  // console.log(theme);
+
   return (
     <Card sx={{ maxWidth: 345 }} id={_id}>
       <CardMedia sx={{ height: 140 }} image={imageUrl} />
       <Chip label={category} />
-      <Chip label={favorite.toString()} />
+      <Chip label={favorite?.toString()} />
       <CardContent>
         <Typography gutterBottom variant="subtitle1" component="p">
           {title}
