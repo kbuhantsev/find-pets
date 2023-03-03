@@ -11,7 +11,7 @@ import {
   ListItem,
   ListItemText,
 } from '@mui/material';
-import { spacing } from '@mui/system';
+import { useParams } from 'react-router-dom';
 
 // {
 //   "_id": "63fe2ad6f3ffff3515f80757",
@@ -35,11 +35,11 @@ import { spacing } from '@mui/system';
 //"myads": true,
 
 const NoticeCard = ({ notice }) => {
-  const {
+  let {
     _id,
     title,
     category,
-    // age,
+    age,
     breed,
     location,
     imageUrl,
@@ -48,10 +48,17 @@ const NoticeCard = ({ notice }) => {
     myads,
   } = notice;
 
+  // С бэкэнда не приходит
+  let { category: currentCategory } = useParams();
+  if (currentCategory === 'my-ads') {
+    myads = true;
+  }
+
   return (
     <Card sx={{ maxWidth: 345 }} id={_id}>
       <CardMedia sx={{ height: 140 }} image={imageUrl} />
       <Chip label={category} />
+      <Chip label={favorite.toString()} />
       <CardContent>
         <Typography gutterBottom variant="subtitle1" component="p">
           {title}
@@ -64,6 +71,12 @@ const NoticeCard = ({ notice }) => {
           <ListItem>
             <ListItemText>Place</ListItemText>
             <ListItemText>{location}</ListItemText>
+          </ListItem>
+          <ListItem>
+            <ListItemText>Age</ListItemText>
+            <ListItemText>
+              {age.years > 0 ? `${age.years} years` : `${age.months} months`}
+            </ListItemText>
           </ListItem>
           {price > 0 && (
             <ListItem>

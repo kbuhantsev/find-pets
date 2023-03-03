@@ -43,10 +43,7 @@ const NoticesList = () => {
         notices && (
           <ul>
             {notices.map(notice => (
-              <NoticeCard
-                key={notice._id}
-                notice={{ ...notice, myads: category === 'my-ads' }}
-              />
+              <NoticeCard key={notice._id} notice={notice} />
             ))}
           </ul>
         )
