@@ -9,6 +9,8 @@ import {
 } from '@mui/material';
 
 export const CardStyled = styled(Card)`
+  display: flex;
+  flex-direction: column;
   max-width: 345px;
   position: relative;
   height: 100%;

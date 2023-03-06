@@ -1,5 +1,12 @@
 import React from 'react';
-import { CardMedia, CardContent, Button, CardActions } from '@mui/material';
+import {
+  CardMedia,
+  CardContent,
+  Button,
+  CardActions,
+  Box,
+} from '@mui/material';
+import DeleteIcon from '@mui/icons-material/Delete';
 import { useParams } from 'react-router-dom';
 import {
   CardStyled,
@@ -59,43 +66,63 @@ const NoticeCard = ({ notice }) => {
       <ChipFavorite label={favorite?.toString()} />
       <CardMedia sx={{ height: 280 }} image={imageUrl} />
 
-      <CardContent>
-        <CardTitle variant="h6" gutterBottom>
-          {title}
-        </CardTitle>
-        <ListStyled>
-          <ListItemStyled>
-            <DescrTitle>Breed</DescrTitle>
-            <DescrValue>{breed}</DescrValue>
-          </ListItemStyled>
-          <ListItemStyled>
-            <DescrTitle>Place</DescrTitle>
-            <DescrValue>{location}</DescrValue>
-          </ListItemStyled>
-          <ListItemStyled>
-            <DescrTitle>Age</DescrTitle>
-            <DescrValue>
-              {age.years > 0 ? `${age.years} years` : `${age.months} months`}
-            </DescrValue>
-          </ListItemStyled>
-          {price > 0 && (
+      <Box
+        display="flex"
+        flexDirection="column"
+        justifyContent="space-between"
+        flexGrow="1"
+      >
+        <CardContent>
+          <CardTitle variant="h6" gutterBottom>
+            {title}
+          </CardTitle>
+          <ListStyled>
             <ListItemStyled>
-              <DescrTitle>Price</DescrTitle>
-              <DescrValue>{price}</DescrValue>
+              <DescrTitle>Breed</DescrTitle>
+              <DescrValue>{breed}</DescrValue>
             </ListItemStyled>
-          )}
-        </ListStyled>
-      </CardContent>
-      <CardActions sx={{ spacing: true }}>
-        {myads && (
-          <Button variant="outlined" size="medium">
-            Delete
+            <ListItemStyled>
+              <DescrTitle>Place</DescrTitle>
+              <DescrValue>{location}</DescrValue>
+            </ListItemStyled>
+            <ListItemStyled>
+              <DescrTitle>Age</DescrTitle>
+              <DescrValue>
+                {age.years > 0 ? `${age.years} years` : `${age.months} months`}
+              </DescrValue>
+            </ListItemStyled>
+            {price > 0 && (
+              <ListItemStyled>
+                <DescrTitle>Price</DescrTitle>
+                <DescrValue>{price}</DescrValue>
+              </ListItemStyled>
+            )}
+          </ListStyled>
+        </CardContent>
+
+        <CardActions
+          sx={{
+            display: 'flex',
+            flexDirection: 'column',
+            gap: '10px',
+            spacing: true,
+            marginTop: 'auto',
+          }}
+        >
+          <Button
+            variant="outlined"
+            size="medium"
+            sx={{ alignItems: 'flex-end' }}
+          >
+            Learn More
           </Button>
-        )}
-        <Button variant="outlined" size="medium">
-          Learn More
-        </Button>
-      </CardActions>
+          {myads && (
+            <Button variant="outlined" size="medium" endIcon={<DeleteIcon />}>
+              Delete
+            </Button>
+          )}
+        </CardActions>
+      </Box>
     </CardStyled>
   );
 };
