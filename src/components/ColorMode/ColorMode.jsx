@@ -10,7 +10,7 @@ const ColorMode = () => {
 
   return (
     <IconButton
-      sx={{ ml: 1, color: 'text.primary' }}
+      sx={{ ml: 1, mr: 2, color: 'text.primary' }}
       onClick={colorMode.toggleColorMode}
     >
       {theme.palette.mode === 'dark' ? (

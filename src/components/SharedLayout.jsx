@@ -20,12 +20,11 @@ const ColorModeContext = React.createContext({
 
 const getDesignTokens = mode => ({
   breakpoints: {
-    keys: ['mobile', 'tablet', 'laptop', 'desktop'],
+    keys: ['mobile', 'tablet', 'desktop'],
     values: {
       mobile: 0,
-      tablet: 600,
-      laptop: 900,
-      desktop: 1200,
+      tablet: 768,
+      desktop: 1280,
     },
     unit: 'px',
   },
@@ -91,7 +90,7 @@ const SharedLayout = () => {
           <>
             <Header />
             <Suspense fallback={<></>}>
-              <Container>
+              <Container maxWidth="desktop">
                 <Outlet />
               </Container>
             </Suspense>

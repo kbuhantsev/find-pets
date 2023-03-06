@@ -12,10 +12,10 @@ const Header = () => {
         <ToolbarStyled>
           <Logo />
           <Navigation />
-          <div>
+          <Box display="flex" flexDirection="row">
             <ColorMode />
             <UserMenu />
-          </div>
+          </Box>
         </ToolbarStyled>
       </AppBarStyled>
     </Box>

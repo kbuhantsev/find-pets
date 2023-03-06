@@ -46,6 +46,7 @@ const NoticesPage = () => {
             flexDirection: 'row',
             gap: '5px',
             flexWrap: 'wrap',
+            marginBottom: '30px',
           }}
         >
           {categories.map(({ title, to }) => (

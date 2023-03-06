@@ -11,6 +11,7 @@ import {
 export const CardStyled = styled(Card)`
   max-width: 345px;
   position: relative;
+  height: 100%;
 `;
 
 export const ChipCategory = styled(Chip)`

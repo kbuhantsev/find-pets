@@ -45,17 +45,11 @@ const NoticesList = () => {
           <Box sx={{ flexGrow: 1 }}>
             <Grid
               container
-              columns={{ mobile: 1, tablet: 2, laptop: 3, desktop: 4 }}
-              spacing={{ mobile: 1, tablet: 2, laptop: 2, desktop: 3 }}
+              columns={{ mobile: 1, tablet: 2, desktop: 4 }}
+              spacing={{ mobile: 3, tablet: 3, desktop: 3 }}
             >
               {notices.map(notice => (
-                <Grid
-                  mobile={1}
-                  tablet={1}
-                  laptop={1}
-                  desktop={1}
-                  key={notice._id}
-                >
+                <Grid mobile={1} tablet={1} desktop={1} key={notice._id}>
                   <NoticeCard notice={notice} />
                 </Grid>
               ))}

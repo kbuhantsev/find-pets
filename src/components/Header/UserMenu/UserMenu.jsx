@@ -1,38 +1,31 @@
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
-import { useNavigate } from 'react-router-dom';
-import { Box, Button } from '@mui/material';
+import { NavLink } from 'react-router-dom';
+import { Box } from '@mui/material';
 import { useUser } from 'hooks/useUser';
+import NavButtonCustom from 'components/Buttons/NavButtonCustom';
 
 const UserMenu = () => {
-  const navigate = useNavigate();
   const { isLoggedIn } = useUser();
 
   return (
     <>
       {isLoggedIn ? (
-        <Button
-          variant="contained"
-          startIcon={<AccountCircleIcon />}
-          onClick={() => navigate('/user')}
-        >
+        <NavButtonCustom to="/user" component={NavLink} variant="contained">
+          <AccountCircleIcon sx={{ mr: '5px' }} />
           Account
-        </Button>
+        </NavButtonCustom>
       ) : (
         <Box display="flex" gap="5px">
-          <Button
-            variant="outlined"
-            color="inherit"
-            onClick={() => navigate('/login')}
-          >
+          <NavButtonCustom to="/login" component={NavLink} variant="contained">
             Login
-          </Button>
-          <Button
+          </NavButtonCustom>
+          <NavButtonCustom
+            to="/register"
+            component={NavLink}
             variant="outlined"
-            color="inherit"
-            onClick={() => navigate('/register')}
           >
             Register
-          </Button>
+          </NavButtonCustom>
         </Box>
       )}
     </>
