@@ -7,7 +7,12 @@ const NavButtonCustom = ({ children, to, ...props }) => {
 
   return (
     <div>
-      <Button variant={match ? 'contained' : 'text'} to={to} {...props}>
+      <Button
+        variant={match ? 'contained' : 'text'}
+        to={to}
+        sx={{ width: '100%' }}
+        {...props}
+      >
         {children}
       </Button>
     </div>
