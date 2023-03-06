@@ -4,12 +4,22 @@ import { Box, IconButton } from '@mui/material';
 import Logo from '../Logo/Logo';
 import Navigation from '../Navigation/Navigation';
 import UserMenu from '../UserMenu/UserMenu';
-import { ToolbarStyled } from '../Header.styled';
+import { ToolbarStyled } from './Toolbar.styled';
 import MenuIcon from '@mui/icons-material/Menu';
+import useMediaQuery from '@mui/material/useMediaQuery';
+import { useTheme } from '@mui/material/styles';
 
 export const Toolbar = () => {
+  const [menuOpen, setMenuOpen] = React.useState(false);
+  const theme = useTheme();
+  const matches = useMediaQuery(theme.breakpoints.up('mobile'));
+
+  const toggleMenu = () => {
+    setMenuOpen(!menuOpen);
+  };
+
   return (
-    <>
+    <Box display="flex">
       <ToolbarStyled>
         <Logo />
         <Navigation />
@@ -17,17 +27,18 @@ export const Toolbar = () => {
           <ColorMode />
           <UserMenu />
         </Box>
-        <IconButton
-          size="large"
-          edge="start"
-          color="inherit"
-          aria-label="menu"
-          sx={{ mr: 2 }}
-        >
-          <MenuIcon />
-        </IconButton>
       </ToolbarStyled>
-    </>
+      <IconButton
+        size="large"
+        edge="start"
+        color="inherit"
+        aria-label="menu"
+        sx={{ mr: 2 }}
+        onClick={toggleMenu}
+      >
+        <MenuIcon sx={{ color: 'black' }} />
+      </IconButton>
+    </Box>
   );
 };
 
