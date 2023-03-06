@@ -4,15 +4,20 @@ import { Box, IconButton } from '@mui/material';
 import Logo from '../Logo/Logo';
 import Navigation from '../Navigation/Navigation';
 import UserMenu from '../UserMenu/UserMenu';
-import { ToolbarStyled } from './Toolbar.styled';
+import { ToolbarStyled, UserMenuWrapper } from './Toolbar.styled';
 import MenuIcon from '@mui/icons-material/Menu';
 import useMediaQuery from '@mui/material/useMediaQuery';
 import { useTheme } from '@mui/material/styles';
+import { BurgerMenu } from '../BurgerMenu/BurgerMenu';
 
 export const Toolbar = () => {
   const [menuOpen, setMenuOpen] = React.useState(false);
   const theme = useTheme();
-  const matches = useMediaQuery(theme.breakpoints.up('mobile'));
+  const isMobile = useMediaQuery(theme.breakpoints.down('tablet'));
+  const isTablet = useMediaQuery(
+    theme.breakpoints.between('tablet', 'desktop')
+  );
+  const isDesktop = useMediaQuery(theme.breakpoints.up('desktop'));
 
   const toggleMenu = () => {
     setMenuOpen(!menuOpen);
@@ -22,22 +27,15 @@ export const Toolbar = () => {
     <Box display="flex">
       <ToolbarStyled>
         <Logo />
-        <Navigation />
-        <Box display="flex" flexDirection="row">
-          <ColorMode />
-          <UserMenu />
-        </Box>
+        {isDesktop && <Navigation />}
+        {(isTablet || isDesktop) && (
+          <UserMenuWrapper>
+            <ColorMode />
+            <UserMenu />
+          </UserMenuWrapper>
+        )}
+        {!isDesktop && <BurgerMenu toggleMenu={toggleMenu} />}
       </ToolbarStyled>
-      <IconButton
-        size="large"
-        edge="start"
-        color="inherit"
-        aria-label="menu"
-        sx={{ mr: 2 }}
-        onClick={toggleMenu}
-      >
-        <MenuIcon sx={{ color: 'black' }} />
-      </IconButton>
     </Box>
   );
 };
