@@ -1,11 +1,5 @@
 import React, { useMemo } from 'react';
-import {
-  CardMedia,
-  CardContent,
-  Button,
-  CardActions,
-  Box,
-} from '@mui/material';
+import { CardMedia, CardContent, Button, Box } from '@mui/material';
 import DeleteIcon from '@mui/icons-material/Delete';
 import { useParams } from 'react-router-dom';
 import {
