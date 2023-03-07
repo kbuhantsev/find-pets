@@ -52,3 +52,10 @@ export const DescrValue = styled(ListItemText)`
   font-size: 16px;
   flex-basis: 70%;
 `;
+
+export const CardActionsWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin: auto 20px 10px 20px;
+`;

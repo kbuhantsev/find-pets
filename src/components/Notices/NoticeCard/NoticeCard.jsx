@@ -9,6 +9,7 @@ import {
 import DeleteIcon from '@mui/icons-material/Delete';
 import { useParams } from 'react-router-dom';
 import {
+  CardActionsWrapper,
   CardStyled,
   CardTitle,
   ChipCategory,
@@ -103,20 +104,8 @@ const NoticeCard = ({ notice }) => {
           </ListStyled>
         </CardContent>
 
-        <CardActions
-          sx={{
-            display: 'flex',
-            flexDirection: 'column',
-            gap: '10px',
-            spacing: true,
-            marginTop: 'auto',
-          }}
-        >
-          <Button
-            variant="outlined"
-            size="medium"
-            sx={{ alignItems: 'flex-end' }}
-          >
+        <CardActionsWrapper>
+          <Button variant="outlined" size="medium">
             Learn More
           </Button>
           {myads && (
@@ -124,7 +113,7 @@ const NoticeCard = ({ notice }) => {
               Delete
             </Button>
           )}
-        </CardActions>
+        </CardActionsWrapper>
       </Box>
     </CardStyled>
   );
