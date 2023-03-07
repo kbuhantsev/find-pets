@@ -25,17 +25,6 @@ export const ChipCategory = styled(Chip)`
   backdrop-filter: blur(2px);
 `;
 
-export const ChipFavorite = styled(Chip)`
-  position: absolute;
-  right: 10px;
-  top: 12px;
-  width: 44px;
-  height: 44px;
-  background: rgba(255, 255, 255, 0.6);
-  backdrop-filter: blur(2px);
-  border-radius: 50%;
-`;
-
 export const CardTitle = styled(Typography)`
   font-size: 28px;
   font-weight: 700;

@@ -12,12 +12,12 @@ import {
   CardStyled,
   CardTitle,
   ChipCategory,
-  ChipFavorite,
   DescrTitle,
   DescrValue,
   ListItemStyled,
   ListStyled,
 } from './NoticeCard.styled';
+import { HeartButton } from 'components/Buttons/HeartButton/HeartButton';
 
 // {
 //   "_id": "63fe2ad6f3ffff3515f80757",
@@ -63,7 +63,7 @@ const NoticeCard = ({ notice }) => {
   return (
     <CardStyled id={_id}>
       <ChipCategory label={category} />
-      <ChipFavorite label={favorite?.toString()} />
+      <HeartButton filled={favorite}></HeartButton>
       <CardMedia sx={{ height: 280 }} image={imageUrl} />
 
       <Box
