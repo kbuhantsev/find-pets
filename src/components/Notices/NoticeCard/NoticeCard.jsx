@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useMemo } from 'react';
 import {
   CardMedia,
   CardContent,
@@ -18,6 +18,7 @@ import {
   ListStyled,
 } from './NoticeCard.styled';
 import { HeartButton } from 'components/Buttons/HeartButton/HeartButton';
+import getCategoryName from 'helpers/getCateroryName';
 
 // {
 //   "_id": "63fe2ad6f3ffff3515f80757",
@@ -50,8 +51,8 @@ const NoticeCard = ({ notice }) => {
     location,
     imageUrl,
     price,
-    favorite,
-    myads,
+    favorite = false,
+    myads = false,
   } = notice;
 
   // С бэкэнда не приходит
@@ -60,9 +61,11 @@ const NoticeCard = ({ notice }) => {
     myads = true;
   }
 
+  const categoryTitle = useMemo(() => getCategoryName(category), [category]);
+
   return (
     <CardStyled id={_id}>
-      <ChipCategory label={category} />
+      <ChipCategory label={categoryTitle} />
       <HeartButton filled={favorite}></HeartButton>
       <CardMedia sx={{ height: 280 }} image={imageUrl} />
 
