@@ -26,7 +26,7 @@ export const Toolbar = () => {
     <Box display="flex">
       <ToolbarStyled>
         <Logo />
-        {isDesktop && <Navigation />}
+        {isDesktop && <Navigation variant="text" />}
         {(isTablet || isDesktop) && (
           <UserMenuWrapper>
             <ColorMode />

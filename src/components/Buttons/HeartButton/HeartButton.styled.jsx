@@ -14,9 +14,17 @@ export const HeartIconWrapper = styled('div')`
 `;
 
 export const HeartIcon = styled(Icon.Heart)`
+  cursor: pointer;
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  fill: ${p => (p.filled === 'true' ? '#F59256' : 'none')};
+  color: ${p => (p.filled === 'true' ? '#F59256' : '#fff')};
+
+  transition: color 0.2s ease-in;
+
+  &:hover,
+  :focus {
+    color: #f59256;
+  }
 `;

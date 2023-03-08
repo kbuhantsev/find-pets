@@ -18,6 +18,7 @@ export const CardStyled = styled(Card)`
 
 export const ChipCategory = styled(Chip)`
   position: absolute;
+  width: 160px;
   top: 20px;
   border-top-left-radius: 0;
   border-bottom-left-radius: 0;

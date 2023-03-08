@@ -30,11 +30,12 @@ const NoticesList = () => {
     data: notices = [],
     error,
     isLoading,
+    isFetching,
   } = useGetNoticesByCategoryQuery(getCategory());
 
   return (
-    <>
-      {isLoading ? (
+    <Box sx={{ display: 'flex', justifyContent: 'center' }}>
+      {isLoading || isFetching ? (
         <Box display="flex" justifyContent="center" marginTop="50px">
           <CircularProgress color="primary" size={75} />
         </Box>
@@ -57,7 +58,7 @@ const NoticesList = () => {
           </Box>
         )
       )}
-    </>
+    </Box>
   );
 };
 

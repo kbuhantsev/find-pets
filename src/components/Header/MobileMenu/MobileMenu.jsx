@@ -32,7 +32,7 @@ export const MobileMenu = ({ toggleMenu }) => {
         </Box>
       )}
 
-      <Navigation />
+      <Navigation variant="text" />
     </MobileMenuStyled>
   );
 };

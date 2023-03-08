@@ -3,25 +3,23 @@ import NavButtonCustom from 'components/Buttons/NavButtonCustom';
 import { NavLink } from 'react-router-dom';
 import { NavListStyled } from './Navigation.styled';
 
-const Navigation = () => {
+const links = [
+  { title: 'News', to: '/news' },
+  { title: 'Find pets', to: '/notices' },
+  { title: 'Our friends', to: '/friends' },
+];
+
+const Navigation = ({ variant }) => {
   return (
     <Box as="nav" display="flex" justifyContent="center">
       <NavListStyled>
-        <li>
-          <NavButtonCustom to="/news" component={NavLink}>
-            News
-          </NavButtonCustom>
-        </li>
-        <li>
-          <NavButtonCustom to="/notices" component={NavLink}>
-            Find pets
-          </NavButtonCustom>
-        </li>
-        <li>
-          <NavButtonCustom to="/friends" component={NavLink}>
-            Our friends
-          </NavButtonCustom>
-        </li>
+        {links.map(({ title, to }) => (
+          <li key={title}>
+            <NavButtonCustom to={to} component={NavLink} variant={variant}>
+              {title}
+            </NavButtonCustom>
+          </li>
+        ))}
       </NavListStyled>
     </Box>
   );
