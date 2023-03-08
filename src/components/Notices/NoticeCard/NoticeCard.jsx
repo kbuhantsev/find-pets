@@ -99,11 +99,20 @@ const NoticeCard = ({ notice }) => {
         </CardContent>
 
         <CardActionsWrapper>
-          <Button variant="outlined" size="medium">
+          <Button
+            variant="outlined"
+            size="medium"
+            sx={{ borderRadius: '20px' }}
+          >
             Learn More
           </Button>
           {myads && (
-            <Button variant="outlined" size="medium" endIcon={<DeleteIcon />}>
+            <Button
+              variant="outlined"
+              size="medium"
+              endIcon={<DeleteIcon />}
+              sx={{ borderRadius: '20px' }}
+            >
               Delete
             </Button>
           )}

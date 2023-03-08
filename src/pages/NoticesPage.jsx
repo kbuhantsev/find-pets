@@ -1,4 +1,12 @@
-import { List, ListItem, Typography } from '@mui/material';
+import SearchIcon from '@mui/icons-material/Search';
+import {
+  Box,
+  OutlinedInput,
+  InputAdornment,
+  List,
+  ListItem,
+  Typography,
+} from '@mui/material';
 import NavButtonCustom from 'components/Buttons/NavButtonCustom';
 import { useUser } from 'hooks/useUser';
 import { useMemo, useState } from 'react';
@@ -31,14 +39,30 @@ const NoticesPage = () => {
   return (
     <>
       {isBaseUrl && <Navigate to="/notices/sell" />}
-      <div>
-        <Typography variant="h5" gutterBottom>
-          NOTICES SEARCH
+
+      <Box
+        display="flex"
+        flexDirection="column"
+        alignItems="center"
+        sx={{
+          marginTop: '60px',
+          marginBottom: '40px',
+        }}
+      >
+        <Typography variant="h4" gutterBottom>
+          Find your favorite pet
         </Typography>
-        <input type="text" placeholder="search text" />
-        <button type="button">Search</button>
-      </div>
-      <div>
+
+        <OutlinedInput
+          placeholder="Search"
+          endAdornment={
+            <InputAdornment position="end">
+              <SearchIcon />
+            </InputAdornment>
+          }
+        />
+      </Box>
+      <>
         <List
           dense={true}
           sx={{
@@ -57,7 +81,7 @@ const NoticesPage = () => {
             </ListItem>
           ))}
         </List>
-      </div>
+      </>
 
       <Outlet />
     </>
