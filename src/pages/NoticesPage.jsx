@@ -1,13 +1,6 @@
-import SearchIcon from '@mui/icons-material/Search';
-import {
-  Box,
-  OutlinedInput,
-  InputAdornment,
-  List,
-  ListItem,
-  Typography,
-} from '@mui/material';
+import { List, ListItem } from '@mui/material';
 import NavButtonCustom from 'components/Buttons/NavButtonCustom';
+import { SearchForm } from 'components/Notices/SearchForm/SearchForm';
 import { useUser } from 'hooks/useUser';
 import { useMemo, useState } from 'react';
 import { useMatch, Outlet, Navigate, NavLink } from 'react-router-dom';
@@ -40,28 +33,7 @@ const NoticesPage = () => {
     <>
       {isBaseUrl && <Navigate to="/notices/sell" />}
 
-      <Box
-        display="flex"
-        flexDirection="column"
-        alignItems="center"
-        sx={{
-          marginTop: '60px',
-          marginBottom: '40px',
-        }}
-      >
-        <Typography variant="h4" gutterBottom>
-          Find your favorite pet
-        </Typography>
-
-        <OutlinedInput
-          placeholder="Search"
-          endAdornment={
-            <InputAdornment position="end">
-              <SearchIcon />
-            </InputAdornment>
-          }
-        />
-      </Box>
+      <SearchForm />
       <>
         <List
           dense={true}
