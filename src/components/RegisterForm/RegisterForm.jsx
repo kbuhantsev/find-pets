@@ -141,10 +141,12 @@ const RegisterForm = () => {
         </Box>
       ) : (
         <RegisterFormStyled onSubmit={formik.handleSubmit}>
-          <Typography variant="h3">Registration</Typography>
+          <Typography variant="h3" sx={{ mb: '40px' }}>
+            Registration
+          </Typography>
           {page === 1 && (
-            <>
-              <FormControl sx={{ m: 1 }} variant="outlined">
+            <Box display="flex" flexDirection="column" gap="16px" mb="16px">
+              <FormControl variant="outlined">
                 <OutlinedInputStyled
                   name="email"
                   type="text"
@@ -160,7 +162,7 @@ const RegisterForm = () => {
                 </FormHelperText>
               </FormControl>
 
-              <FormControl sx={{ m: 1 }} variant="outlined">
+              <FormControl variant="outlined">
                 <OutlinedInputStyled
                   name="password"
                   type={showPassword ? 'text' : 'password'}
@@ -190,7 +192,7 @@ const RegisterForm = () => {
                 </FormHelperText>
               </FormControl>
 
-              <FormControl sx={{ m: 1 }} variant="outlined">
+              <FormControl variant="outlined">
                 <OutlinedInputStyled
                   name="confirm_password"
                   type={showPassword ? 'text' : 'password'}
@@ -220,11 +222,11 @@ const RegisterForm = () => {
                   {formik.errors.confirm_password}
                 </FormHelperText>
               </FormControl>
-            </>
+            </Box>
           )}
           {page === 2 && (
-            <>
-              <FormControl sx={{ m: 1 }} variant="outlined">
+            <Box display="flex" flexDirection="column" gap="16px">
+              <FormControl variant="outlined">
                 <OutlinedInputStyled
                   name="name"
                   type="text"
@@ -240,7 +242,7 @@ const RegisterForm = () => {
                 </FormHelperText>
               </FormControl>
 
-              <FormControl sx={{ m: 1 }} variant="outlined">
+              <FormControl variant="outlined">
                 <OutlinedInputStyled
                   name="city"
                   type="text"
@@ -256,7 +258,7 @@ const RegisterForm = () => {
                 </FormHelperText>
               </FormControl>
 
-              <FormControl sx={{ m: 1 }} variant="outlined">
+              <FormControl variant="outlined">
                 <OutlinedInputStyled
                   name="phone"
                   type="text"
@@ -276,11 +278,16 @@ const RegisterForm = () => {
                 variant="contained"
                 type="submit"
                 size="large"
-                sx={{ borderRadius: '20px', width: '100%', mb: '16px' }}
+                sx={{
+                  borderRadius: '20px',
+                  width: '100%',
+                  marginTop: '16px',
+                  marginBottom: '16px',
+                }}
               >
                 Register
               </Button>
-            </>
+            </Box>
           )}
           <Button
             variant={page === 1 ? 'contained' : 'outlined'}
