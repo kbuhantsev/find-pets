@@ -128,16 +128,14 @@ export const LoginForm = () => {
               {formik.errors.password}
             </FormHelperText>
           </FormControl>
-          <FormControl sx={{ m: 1, width: '50ch' }}>
-            <Button
-              variant="contained"
-              type="submit"
-              size="large"
-              sx={{ borderRadius: '20px', width: '100%' }}
-            >
-              Login
-            </Button>
-          </FormControl>
+          <Button
+            variant="contained"
+            type="submit"
+            size="large"
+            sx={{ borderRadius: '20px', width: '100%' }}
+          >
+            Login
+          </Button>
         </LoginFormStyled>
       )}
     </>
