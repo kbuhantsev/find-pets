@@ -1,7 +1,9 @@
 import styled from '@emotion/styled';
-import { OutlinedInput } from '@mui/material';
 
 export const LoginFormStyled = styled.form(({ theme }) => ({
+  display: 'flex',
+  flexDirection: 'column',
+  gap: '16px',
   width: '280px',
   position: 'absolute',
   top: '100px',
@@ -20,7 +22,3 @@ export const LoginFormStyled = styled.form(({ theme }) => ({
     width: '618px',
   },
 }));
-
-export const OutlinedInputStyled = styled(OutlinedInput)`
-  border-radius: 30px;
-`;

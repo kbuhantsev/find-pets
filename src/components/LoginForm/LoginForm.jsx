@@ -15,7 +15,8 @@ import {
 } from '@mui/material';
 import { Visibility, VisibilityOff } from '@mui/icons-material';
 import { Box } from '@mui/system';
-import { LoginFormStyled, OutlinedInputStyled } from './LoginForm.styled';
+import { LoginFormStyled } from './LoginForm.styled';
+import { OutlinedInputStyled } from 'components/Inputs/OutlinedInput.styled';
 
 const validationSchema = Yup.object({
   email: Yup.string()
@@ -82,8 +83,10 @@ export const LoginForm = () => {
         </Box>
       ) : (
         <LoginFormStyled onSubmit={formik.handleSubmit}>
-          <Typography variant="h3">Login</Typography>
-          <FormControl sx={{ m: 1, width: '50ch' }} variant="outlined">
+          <Typography variant="h3" sx={{ mb: '40px' }}>
+            Login
+          </Typography>
+          <FormControl variant="outlined">
             <OutlinedInputStyled
               name="email"
               type="text"
@@ -98,10 +101,7 @@ export const LoginForm = () => {
               {formik.errors.email}
             </FormHelperText>
           </FormControl>
-          <FormControl
-            sx={{ m: 1, width: '50ch', borderRadius: '20px' }}
-            variant="outlined"
-          >
+          <FormControl variant="outlined">
             <OutlinedInputStyled
               name="password"
               type={showPassword ? 'text' : 'password'}
