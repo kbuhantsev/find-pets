@@ -24,7 +24,7 @@ const UserMenu = () => {
             component={NavLink}
             variant="outlined"
           >
-            Register
+            Registration
           </NavButtonCustom>
         </Box>
       )}
