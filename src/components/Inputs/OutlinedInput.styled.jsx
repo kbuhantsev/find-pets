@@ -6,6 +6,7 @@ export const OutlinedInputStyled = styled(OutlinedInput)(
     borderRadius: '30px',
     height: '40px',
     border: `${error ? '1px solid red' : '1px solid rgba(245, 146, 86, 0.5)'}`,
+    backgroundColor: '#FDF7F2',
     [theme.breakpoints.up('tablet')]: {
       height: '52px',
     },

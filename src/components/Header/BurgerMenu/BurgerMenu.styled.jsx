@@ -5,7 +5,7 @@ export const IconButtonWrapper = styled('div')(({ theme }) => ({
   flexDirection: 'row',
   marginLeft: 'auto',
   [theme.breakpoints.up('tablet')]: {
-    marginLeft: '0',
+    marginLeft: '20px',
   },
   [theme.breakpoints.up('desktop')]: {
     flexDirection: 'row',
