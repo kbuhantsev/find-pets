@@ -1,5 +1,4 @@
 import styled from '@emotion/styled';
-import { OutlinedInput } from '@mui/material';
 
 export const RegisterFormStyled = styled.form(({ theme }) => ({
   display: 'flex',
@@ -22,7 +21,3 @@ export const RegisterFormStyled = styled.form(({ theme }) => ({
     width: '618px',
   },
 }));
-
-export const OutlinedInputStyled = styled(OutlinedInput)`
-  border-radius: 30px;
-`;

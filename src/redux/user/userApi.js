@@ -32,11 +32,11 @@ export const userApi = createApi({
     }),
     registerUser: builder.mutation({
       query: payload => ({
-        url: '/users/login',
+        url: '/users/register',
         method: 'POST',
         body: payload,
       }),
-      providesTags: ['User'],
+      invalidatesTags: ['User'],
     }),
     getCurrentUser: builder.query({
       query: () => '/users/current',

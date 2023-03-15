@@ -15,7 +15,8 @@ import {
   InputAdornment,
   Typography,
 } from '@mui/material';
-import { OutlinedInputStyled, RegisterFormStyled } from './RegisterForm.styled';
+import { RegisterFormStyled } from './RegisterForm.styled';
+import { OutlinedInputStyled } from '../Inputs/OutlinedInput.styled';
 import { Visibility, VisibilityOff } from '@mui/icons-material';
 import { Notify } from 'notiflix/build/notiflix-notify-aio';
 import { useNavigate } from 'react-router-dom';
@@ -143,7 +144,7 @@ const RegisterForm = () => {
           <Typography variant="h3">Registration</Typography>
           {page === 1 && (
             <>
-              <FormControl sx={{ m: 1, width: '50ch' }} variant="outlined">
+              <FormControl sx={{ m: 1 }} variant="outlined">
                 <OutlinedInputStyled
                   name="email"
                   type="text"
@@ -159,10 +160,7 @@ const RegisterForm = () => {
                 </FormHelperText>
               </FormControl>
 
-              <FormControl
-                sx={{ m: 1, width: '50ch', borderRadius: '20px' }}
-                variant="outlined"
-              >
+              <FormControl sx={{ m: 1 }} variant="outlined">
                 <OutlinedInputStyled
                   name="password"
                   type={showPassword ? 'text' : 'password'}
@@ -192,10 +190,7 @@ const RegisterForm = () => {
                 </FormHelperText>
               </FormControl>
 
-              <FormControl
-                sx={{ m: 1, width: '50ch', borderRadius: '20px' }}
-                variant="outlined"
-              >
+              <FormControl sx={{ m: 1 }} variant="outlined">
                 <OutlinedInputStyled
                   name="confirm_password"
                   type={showPassword ? 'text' : 'password'}
@@ -229,7 +224,7 @@ const RegisterForm = () => {
           )}
           {page === 2 && (
             <>
-              <FormControl sx={{ m: 1, width: '50ch' }} variant="outlined">
+              <FormControl sx={{ m: 1 }} variant="outlined">
                 <OutlinedInputStyled
                   name="name"
                   type="text"
@@ -245,7 +240,7 @@ const RegisterForm = () => {
                 </FormHelperText>
               </FormControl>
 
-              <FormControl sx={{ m: 1, width: '50ch' }} variant="outlined">
+              <FormControl sx={{ m: 1 }} variant="outlined">
                 <OutlinedInputStyled
                   name="city"
                   type="text"
@@ -261,7 +256,7 @@ const RegisterForm = () => {
                 </FormHelperText>
               </FormControl>
 
-              <FormControl sx={{ m: 1, width: '50ch' }} variant="outlined">
+              <FormControl sx={{ m: 1 }} variant="outlined">
                 <OutlinedInputStyled
                   name="phone"
                   type="text"
