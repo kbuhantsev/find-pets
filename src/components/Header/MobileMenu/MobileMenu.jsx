@@ -11,7 +11,7 @@ export const MobileMenu = ({ toggleMenu }) => {
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down('tablet'));
 
-  const onMobileMenuClick = event => {
+  const onMobileMenuClick = () => {
     toggleMenu();
   };
 
