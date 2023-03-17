@@ -1,29 +1,74 @@
-import React from 'react';
-// import { useUser } from 'hooks/useUser';
+import React, { useMemo } from 'react';
+import { useUser } from 'hooks/useUser';
 // import EditIcon from '@mui/icons-material/Edit';
 // import CheckIcon from '@mui/icons-material/Check';
-import { Button } from '@mui/material';
-import LogoutIcon from '@mui/icons-material/Logout';
-import { Notify } from 'notiflix';
-import { useCallback } from 'react';
-import { useLogOutUserMutation } from 'redux/user/userApi';
+
+import { FormStyled, UserFormWrapper } from './UserDataForm.styled';
+import { useFormik } from 'formik';
+import * as Yup from 'yup';
+import LogoutButton from 'components/Buttons/LogoutButton/LogoutButton';
+import { Notify } from 'notiflix/build/notiflix-notify-aio';
+// import { useUpdateUserMutation } from 'redux/user/userApi';
+
+export const userProfileValidation = Yup.object({
+  name: Yup.string()
+    .min(1, 'Name is too short!')
+    .max(70, 'Name is too long!')
+    .matches(/^[a-zA-Z]+$/, 'Only letters!'),
+  email: Yup.string().matches(
+    /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
+    'Incorrect email address!'
+  ),
+  birthdate: Yup.string().matches(
+    /^(?:(?:31(\/|-|\.)(?:0?[13578]|1[02]))\1|(?:(?:29|30)(\/|-|\.)(?:0?[13-9]|1[0-2])\2))(?:(?:1[6-9]|[2-9]\d)?\d{2})$|^(?:29(\/|-|\.)0?2\3(?:(?:(?:1[6-9]|[2-9]\d)?(?:0[48]|[2468][048]|[13579][26])|(?:(?:16|[2468][048]|[3579][26])00))))$|^(?:0?[1-9]|1\d|2[0-8])(\/|-|\.)(?:(?:0?[1-9])|(?:1[0-2]))\4(?:(?:1[6-9]|[2-9]\d)?\d{2})$/
+  ),
+  phone: Yup.string().matches(/^\+380\d{9}$/, 'must have +380 format'),
+  city: Yup.string().matches(
+    /[A-Za-z]+, [A-Za-z]+/,
+    'Format is "region, city"'
+  ),
+});
 
 const UserDataForm = () => {
-  // const { user } = useUser();
-  const [logOutUser] = useLogOutUserMutation();
+  const { user } = useUser();
+  // const [updateUser] = useUpdateUserMutation();
 
-  const onBtnLogOutClick = useCallback(async () => {
-    try {
-      await logOutUser();
-      Notify.success('Success');
-    } catch (error) {
-      Notify.error(error.message);
-    }
-  }, [logOutUser]);
+  const convertDate = dateString => {
+    if (!dateString) return '0000-00-00';
+    const date = new Date(dateString);
+    return [
+      date.toLocaleString('default', { year: 'numeric' }),
+      date.toLocaleString('default', { month: '2-digit' }),
+      date.toLocaleString('default', { day: '2-digit' }),
+    ].join('-');
+  };
+
+  const userData = useMemo(() => {
+    const {
+      name = '',
+      email = '',
+      birthday = '0000-00-00',
+      phone = '',
+      city = '',
+    } = user;
+
+    return { name, email, birthday: convertDate(birthday), phone, city };
+  }, [user]);
+
+  const handleSubmit = async (values, actions) => {
+    Notify.success(values.toString());
+  };
+
+  const formik = useFormik({
+    initialValues: { ...userData },
+    enableReinitialize: true,
+    validationSchema: userProfileValidation,
+    onSubmit: handleSubmit,
+  });
 
   return (
-    <>
-      <form>
+    <UserFormWrapper>
+      <FormStyled onSubmit={formik.handleSubmit}>
         <label>
           Name:
           <input type="text"></input>
@@ -44,15 +89,9 @@ const UserDataForm = () => {
           City:
           <input type="text"></input>
         </label>
-      </form>
-      <Button
-        variant="text"
-        onClick={onBtnLogOutClick}
-        startIcon={<LogoutIcon />}
-      >
-        Log out
-      </Button>
-    </>
+      </FormStyled>
+      <LogoutButton />
+    </UserFormWrapper>
   );
 };
 

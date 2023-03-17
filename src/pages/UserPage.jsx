@@ -1,13 +1,13 @@
-import { Box } from '@mui/system';
 import PetsList from 'components/UserPage/PetsList/PetsList';
 import UserInformation from 'components/UserPage/UserInformation/UserInformation';
+import { UserPageWrapper } from 'components/UserPage/UserPage.styled';
 
 const UserPage = () => {
   return (
-    <Box display="flex" gap="40px">
+    <UserPageWrapper>
       <UserInformation />
       <PetsList />
-    </Box>
+    </UserPageWrapper>
   );
 };
 

@@ -25,6 +25,5 @@ export const IconButtonStyled = styled(IconButton)`
 export const EditPhotoSpan = styled.span`
   font-size: 12px;
   letter-spacing: 0.04em;
-
   color: ${p => p.theme.palette.common.black};
 `;

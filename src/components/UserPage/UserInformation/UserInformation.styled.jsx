@@ -12,11 +12,11 @@ export const PaperStyled = styled(Paper)(({ theme }) => ({
   flexDirection: 'column',
   alignItems: 'center',
   padding: '20px 16px 10px 16px',
-  [theme.breakpoints.up('mobile')]: {
-    flexDirection: 'row',
-  },
   [theme.breakpoints.up('tablet')]: {
+    flexDirection: 'row-reverse',
+  },
+  [theme.breakpoints.up('desktop')]: {
     flexDirection: 'column',
-    width: '410px',
+    maxWidth: '410px',
   },
 }));
