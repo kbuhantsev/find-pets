@@ -4,6 +4,7 @@ import { Notify } from 'notiflix';
 import { useUser } from 'hooks/useUser';
 import {
   AvatarStyled,
+  EditPhotoSpan,
   IconButtonStyled,
   UserAvatarWrapper,
 } from './UserAvatar.styled';
@@ -20,7 +21,7 @@ const UserAvatar = () => {
       <AvatarStyled alt={user.name} src={user.avatarURL} />
       <IconButtonStyled onClick={onBtnEditPhotoClick}>
         <PhotoCameraIcon />
-        <span style={{ color: 'black' }}>Edit photo</span>
+        <EditPhotoSpan>Edit photo</EditPhotoSpan>
       </IconButtonStyled>
     </UserAvatarWrapper>
   );

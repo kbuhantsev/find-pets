@@ -3,7 +3,9 @@ import { Avatar, IconButton } from '@mui/material';
 
 export const UserAvatarWrapper = styled.div`
   display: flex;
+  justify-content: center;
   position: relative;
+  width: 100%;
 `;
 
 export const AvatarStyled = styled(Avatar)`
@@ -18,4 +20,11 @@ export const IconButtonStyled = styled(IconButton)`
   bottom: 0;
   right: 0;
   color: ${p => p.theme.palette.primary.light};
+`;
+
+export const EditPhotoSpan = styled.span`
+  font-size: 12px;
+  letter-spacing: 0.04em;
+
+  color: ${p => p.theme.palette.common.black};
 `;

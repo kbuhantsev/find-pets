@@ -1,7 +1,7 @@
 import React from 'react';
-import { useUser } from 'hooks/useUser';
-import EditIcon from '@mui/icons-material/Edit';
-import CheckIcon from '@mui/icons-material/Check';
+// import { useUser } from 'hooks/useUser';
+// import EditIcon from '@mui/icons-material/Edit';
+// import CheckIcon from '@mui/icons-material/Check';
 import { Button } from '@mui/material';
 import LogoutIcon from '@mui/icons-material/Logout';
 import { Notify } from 'notiflix';
@@ -9,7 +9,7 @@ import { useCallback } from 'react';
 import { useLogOutUserMutation } from 'redux/user/userApi';
 
 const UserDataForm = () => {
-  const { user } = useUser();
+  // const { user } = useUser();
   const [logOutUser] = useLogOutUserMutation();
 
   const onBtnLogOutClick = useCallback(async () => {
