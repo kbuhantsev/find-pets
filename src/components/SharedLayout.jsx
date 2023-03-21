@@ -33,8 +33,8 @@ const getDesignTokens = mode => ({
     ...(mode === 'light'
       ? {
           primary: {
-            main: '#FF6101',
-            light: '#F59256',
+            main: '#F59256',
+            light: '#FF6101',
           },
           background: {
             paper: '#fff',
@@ -43,8 +43,8 @@ const getDesignTokens = mode => ({
         }
       : {
           primary: {
-            main: '#FF6101',
-            light: '#F59256',
+            main: '#F59256',
+            light: '#FF6101',
           },
           background: {
             paper: '#000',

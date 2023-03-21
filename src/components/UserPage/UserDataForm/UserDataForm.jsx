@@ -1,13 +1,13 @@
 import React, { useMemo } from 'react';
 import { useUser } from 'hooks/useUser';
-// import EditIcon from '@mui/icons-material/Edit';
-// import CheckIcon from '@mui/icons-material/Check';
 
 import { FormStyled, UserFormWrapper } from './UserDataForm.styled';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
 import LogoutButton from 'components/Buttons/LogoutButton/LogoutButton';
 import { Notify } from 'notiflix/build/notiflix-notify-aio';
+import TextInput from './TextInput/TextInput';
+import DateInput from './DateInput/DateInput';
 // import { useUpdateUserMutation } from 'redux/user/userApi';
 
 export const userProfileValidation = Yup.object({
@@ -69,26 +69,25 @@ const UserDataForm = () => {
   return (
     <UserFormWrapper>
       <FormStyled onSubmit={formik.handleSubmit}>
-        <label>
-          Name:
-          <input type="text"></input>
-        </label>
-        <label>
-          Email:
-          <input type="text"></input>
-        </label>
-        <label>
-          Birthday:
-          <input type="text"></input>
-        </label>
-        <label>
-          Phone:
-          <input type="text"></input>
-        </label>
-        <label>
-          City:
-          <input type="text"></input>
-        </label>
+        {Object.entries(formik.initialValues).map(entrie => {
+          if (entrie[0] === 'birthday') {
+            return (
+              <DateInput
+                key={entrie[0]}
+                formik={formik}
+                fieldName={entrie[0]}
+              />
+            );
+          } else {
+            return (
+              <TextInput
+                key={entrie[0]}
+                formik={formik}
+                fieldName={entrie[0]}
+              />
+            );
+          }
+        })}
       </FormStyled>
       <LogoutButton />
     </UserFormWrapper>
