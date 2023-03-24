@@ -8,7 +8,7 @@ import LogoutButton from 'components/Buttons/LogoutButton/LogoutButton';
 import { Notify } from 'notiflix/build/notiflix-notify-aio';
 import TextInput from './TextInput/TextInput';
 import DateInput from './DateInput/DateInput';
-// import { useUpdateUserMutation } from 'redux/user/userApi';
+import { useUpdateUserMutation } from 'redux/user/userApi';
 
 export const userProfileValidation = Yup.object({
   name: Yup.string()
@@ -31,7 +31,7 @@ export const userProfileValidation = Yup.object({
 
 const UserDataForm = () => {
   const { user } = useUser();
-  // const [updateUser] = useUpdateUserMutation();
+  const [updateUser, { isLoading, isError, error }] = useUpdateUserMutation();
 
   const convertDate = dateString => {
     if (!dateString) return '0000-00-00';
@@ -55,8 +55,13 @@ const UserDataForm = () => {
     return { name, email, birthday: convertDate(birthday), phone, city };
   }, [user]);
 
-  const handleSubmit = async (values, actions) => {
-    Notify.success(values.toString());
+  const handleSubmit = async (values, { setSubmitting }) => {
+    await updateUser(values).unwrap();
+    setSubmitting(false);
+    if (isError) {
+      console.log(error);
+      Notify.failure(JSON.stringify(error.data));
+    }
   };
 
   const formik = useFormik({
@@ -76,6 +81,7 @@ const UserDataForm = () => {
                 key={entrie[0]}
                 formik={formik}
                 fieldName={entrie[0]}
+                isLoading={isLoading}
               />
             );
           } else {
@@ -84,6 +90,7 @@ const UserDataForm = () => {
                 key={entrie[0]}
                 formik={formik}
                 fieldName={entrie[0]}
+                isLoading={isLoading}
               />
             );
           }

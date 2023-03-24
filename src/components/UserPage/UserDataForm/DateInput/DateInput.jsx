@@ -1,12 +1,16 @@
-import React from 'react';
+import React, { useMemo, useState } from 'react';
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
-import { DesktopDatePicker } from '@mui/x-date-pickers/DesktopDatePicker';
 import dayjs from 'dayjs';
-//import { OutlinedInputStyled } from 'components/Inputs/OutlinedInput.styled';
-import { TextField } from '@mui/material';
+import { Box, IconButton, InputLabel, TextField } from '@mui/material';
+import { Notify } from 'notiflix/build/notiflix-notify-aio';
+import EditIcon from '@mui/icons-material/Edit';
+import CheckIcon from '@mui/icons-material/Check';
+import { DatePickerStyled } from './DateInput.styled';
 
-const DateInput = ({ formik, fieldName }) => {
+const DateInput = ({ formik, fieldName, isLoading }) => {
+  const [focus, setFocus] = useState(false);
+
   const [value, setValue] = React.useState(
     dayjs(new Date(formik.values[fieldName]))
   );
@@ -16,16 +20,42 @@ const DateInput = ({ formik, fieldName }) => {
     formik.values[fieldName] = dayjs(newValue).format('YYYY-MM-DD');
   };
 
+  const fieldError = useMemo(
+    () => formik.errors[fieldName],
+    [formik.errors, fieldName]
+  );
+
+  const iconButtonClick = async () => {
+    if (focus && Boolean(fieldError)) {
+      Notify.failure(fieldError);
+      return;
+    }
+
+    setFocus(prev => !prev);
+
+    if (focus) {
+      formik.handleSubmit();
+    }
+  };
+
   return (
-    <LocalizationProvider dateAdapter={AdapterDayjs}>
-      <DesktopDatePicker
-        label="Birthday"
-        inputFormat="DD.MM.YYYY"
-        value={value}
-        onChange={handleChange}
-        renderInput={params => <TextField {...params} />}
-      />
-    </LocalizationProvider>
+    <Box display="flex" justifyContent="space-between">
+      <InputLabel sx={{ display: 'flex', alignItems: 'center' }}>
+        {fieldName.charAt(0).toUpperCase() + fieldName.substr(1)}
+      </InputLabel>
+      <LocalizationProvider dateAdapter={AdapterDayjs}>
+        <DatePickerStyled
+          inputFormat="DD.MM.YYYY"
+          value={value}
+          onChange={handleChange}
+          disabled={!focus}
+          renderInput={params => <TextField {...params} />}
+        />
+      </LocalizationProvider>
+      <IconButton onClick={iconButtonClick} disabled={isLoading}>
+        {focus ? <CheckIcon color="primary" /> : <EditIcon color="primary" />}
+      </IconButton>
+    </Box>
   );
 };
 

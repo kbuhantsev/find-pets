@@ -7,7 +7,7 @@ import { TextFieldStyled } from './TextInput.styled';
 import { Notify } from 'notiflix/build/notiflix-notify-aio';
 import InputLabel from '@mui/material/InputLabel';
 
-const TextInput = ({ formik, fieldName }) => {
+const TextInput = ({ formik, fieldName, isLoading }) => {
   const [focus, setFocus] = useState(false);
 
   const fieldError = useMemo(
@@ -22,15 +22,16 @@ const TextInput = ({ formik, fieldName }) => {
     }
 
     setFocus(prev => !prev);
+
     if (focus) {
-      //formik.handleSubmit();
+      formik.handleSubmit();
     }
   };
 
   return (
-    <Box display="flex">
+    <Box display="flex" justifyContent="space-between">
       <InputLabel sx={{ display: 'flex', alignItems: 'center' }}>
-        Label
+        {fieldName.charAt(0).toUpperCase() + fieldName.substr(1)}
       </InputLabel>
       <TextFieldStyled
         variant="standard"
@@ -44,7 +45,7 @@ const TextInput = ({ formik, fieldName }) => {
         helperText={formik.errors[fieldName]}
       />
 
-      <IconButton onClick={iconButtonClick}>
+      <IconButton onClick={iconButtonClick} disabled={isLoading}>
         {focus ? <CheckIcon color="primary" /> : <EditIcon color="primary" />}
       </IconButton>
     </Box>
