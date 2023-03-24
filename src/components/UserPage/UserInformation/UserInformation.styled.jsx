@@ -17,6 +17,6 @@ export const PaperStyled = styled(Paper)(({ theme }) => ({
   },
   [theme.breakpoints.up('desktop')]: {
     flexDirection: 'column',
-    maxWidth: '410px',
+    width: '410px',
   },
 }));

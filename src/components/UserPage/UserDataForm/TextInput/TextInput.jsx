@@ -5,6 +5,7 @@ import CheckIcon from '@mui/icons-material/Check';
 import { Box } from '@mui/system';
 import { TextFieldStyled } from './TextInput.styled';
 import { Notify } from 'notiflix/build/notiflix-notify-aio';
+import InputLabel from '@mui/material/InputLabel';
 
 const TextInput = ({ formik, fieldName }) => {
   const [focus, setFocus] = useState(false);
@@ -28,6 +29,9 @@ const TextInput = ({ formik, fieldName }) => {
 
   return (
     <Box display="flex">
+      <InputLabel sx={{ display: 'flex', alignItems: 'center' }}>
+        Label
+      </InputLabel>
       <TextFieldStyled
         variant="standard"
         name={fieldName}
@@ -39,6 +43,7 @@ const TextInput = ({ formik, fieldName }) => {
         error={formik.touched[fieldName] && Boolean(formik.errors[fieldName])}
         helperText={formik.errors[fieldName]}
       />
+
       <IconButton onClick={iconButtonClick}>
         {focus ? <CheckIcon color="primary" /> : <EditIcon color="primary" />}
       </IconButton>
