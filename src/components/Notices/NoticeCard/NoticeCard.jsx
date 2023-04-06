@@ -14,6 +14,12 @@ import {
 } from './NoticeCard.styled';
 import { HeartButton } from 'components/Buttons/HeartButton/HeartButton';
 import getCategoryName from 'helpers/getCateroryName';
+import { useUser } from 'hooks/useUser';
+import { useNavigate } from 'react-router-dom';
+import {
+  useAddToFavoritesMutation,
+  useDeleteFromFavoritesMutation,
+} from 'redux/notices/noticesApi';
 
 // {
 //   "_id": "63fe2ad6f3ffff3515f80757",
@@ -58,10 +64,31 @@ const NoticeCard = ({ notice }) => {
 
   const categoryTitle = useMemo(() => getCategoryName(category), [category]);
 
+  const { isLoggedIn } = useUser();
+  const navigate = useNavigate();
+  const [addToFavorites, { isLoading: adding }] = useAddToFavoritesMutation();
+  const [deleteFromFavorites, { isLoading: deleting }] =
+    useDeleteFromFavoritesMutation();
+
+  const onHeartBtnClick = async () => {
+    if (!isLoggedIn) {
+      navigate('/login');
+    }
+    if (favorite) {
+      await deleteFromFavorites(_id).unwrap();
+    } else {
+      await addToFavorites(_id).unwrap();
+    }
+  };
+
   return (
     <CardStyled id={_id}>
       <ChipCategory label={categoryTitle} />
-      <HeartButton filled={favorite}></HeartButton>
+      <HeartButton
+        filled={favorite}
+        onClick={onHeartBtnClick}
+        disabled={adding || deleting}
+      ></HeartButton>
       <CardMedia sx={{ height: 280 }} image={imageUrl} />
 
       <Box
